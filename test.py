@@ -79,19 +79,19 @@ Background = Image.open("background.jpg").convert("RGBA")
 result =0
 
 while True:
-
+    #배경화면 구현 및 물고기가 잡혔는지 아닌지에 따라 고양이 이미지 변경
     image.paste(Background, (0, 0))
+
     if(result==1) :
         image.paste(Fish_cat, (140, 90), Fish_cat) 
     else:
         image.paste(cat, (150, 80), cat) 
-        
+    
+    # A키를 누름에 따라 낚시 화면 이동
     if not button_A.value:  # left pressed
         result = subprocess.run(["python", "main.py"])
     with open('result.txt', 'r') as file:                            
         result = int(file.read())
-    print(result)
-
         
     # Display the Image
     disp.image(image)
