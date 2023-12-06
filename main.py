@@ -171,9 +171,7 @@ while True:
             file.write('0')
         subprocess.run(["python", "test.py"])
     
-    line_y = min(height, line_y - 1)
-    print("ASF")
-    
+    line_y = min(height, line_y - 1)    
 
     time.sleep(0.1)
 
