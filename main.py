@@ -102,11 +102,6 @@ while True:
             
         else :
             image.paste(Unknown_fish, ((fish["x"]-12), fish["y"]))
-            draw.ellipse(
-                (fish["x"], fish["y"], fish["x"] + 10, fish["y"] + 10),
-                outline=(255, 0, 0),
-                fill=(255, 0, 0),
-            )
 
         
     if (caught_fish == None):
