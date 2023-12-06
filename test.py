@@ -85,10 +85,8 @@ while True:
 
 
     if not button_A.value:  # left pressed
-        print("work")
         subprocess.run(["python", "main.py"])
         
-
     # Display the Image
     disp.image(image)
 
