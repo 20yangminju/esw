@@ -167,12 +167,18 @@ while True:
     if line_y > height:
         if caught_fish:
             if not button_B.value :
+                with open('result.txt', 'w') as file:
+                    file.write('1')
                 subprocess.run(["python", "test.py"])
         else:
+            with open('result.txt', 'w') as file:
+                file.write('0')
             subprocess.run(["python", "test.py"])
 
 
     if line_y < -10 or (line_y<100 and line_x < 0) or (line_y<100 and line_x > 240) :
+        with open('result.txt', 'w') as file:
+            file.write('0')
         subprocess.run(["python", "test.py"])
     
 
