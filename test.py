@@ -23,7 +23,6 @@ disp = st7789.ST7789(
     rst=reset_pin,
     baudrate=BAUDRATE,
 )
-
 # Input pins:
 button_A = DigitalInOut(board.D5)
 button_A.direction = Direction.INPUT
@@ -42,7 +41,6 @@ button_U.direction = Direction.INPUT
 
 button_D = DigitalInOut(board.D22)
 button_D.direction = Direction.INPUT
-
 
 # Turn on the Backlight
 backlight = DigitalInOut(board.D26)
@@ -74,18 +72,26 @@ button_outline = "#FFFFFF"
 
 fnt = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 30)
 
+# 배경화면과 캐릭터에 사용될 이미지 불러오기
 cat = Image.open("cat.png").convert("RGBA")
 Fish_cat = Image.open("Fish_cat(1).png").convert("RGBA")
 Background = Image.open("background.jpg").convert("RGBA")
+result =0
 
 while True:
 
     image.paste(Background, (0, 0))
-    image.paste(Fish_cat, (140, 90), Fish_cat)    
-
-
+    if(result==1) :
+        image.paste(Fish_cat, (140, 90), Fish_cat) 
+    else:
+        image.paste(cat, (150, 80), cat) 
+        
     if not button_A.value:  # left pressed
-        subprocess.run(["python", "main.py"])
+        result = subprocess.run(["python", "main.py"])
+    with open('result.txt', 'r') as file:                            
+        result = int(file.read())
+    print(result)
+
         
     # Display the Image
     disp.image(image)
