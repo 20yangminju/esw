@@ -80,18 +80,11 @@ line_y = 0
 line_length = 10
 caught_fish = None
 
-
-
-
 while True:
     image.paste(Background, (0, 0))
     A = str(240-line_y)
     draw.text((0, 0), A, font=fnt, fill=(255,255,255))
     current_time = time.time()
-
-
-    
-
 
     for fish in fish_list:
 
@@ -147,10 +140,7 @@ while True:
                     line_y += 2
                 draw.polygon([(0, 60), (36, 42), (36, 81)], outline=udlr_outline, fill=left_fill)
 
-    disp.image(image)
-
-    
-                    
+    disp.image(image)         
 
     if not button_U.value:
         line_y -= 5
@@ -181,8 +171,9 @@ while True:
             file.write('0')
         subprocess.run(["python", "test.py"])
     
-
     line_y = min(height, line_y - 1)
+    print("ASF")
+    
 
     time.sleep(0.1)
 
